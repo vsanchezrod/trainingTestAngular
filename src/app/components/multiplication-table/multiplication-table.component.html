@@ -1,0 +1,7 @@
+<p>Tabla multiplicar del {{ numberSelected }}</p>
+
+<div>
+  <p *ngFor="let i of range">
+    {{ numberSelected }} * {{ i }} = {{ multiplicate(i) }}
+  </p>
+</div>
