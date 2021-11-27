@@ -15,14 +15,34 @@ export class MultiplicationTableComponent implements OnInit {
     this.range = Array.from({length: 10}, (_, i) => i + 1);
   }
 
-  ngOnInit(): void {}
-
-  /**
-   * Multiplicate number
-   * @param n
-   */
-  multiplicate(n: number): number {
-    return this.numberSelected * n;
+  ngOnInit(): void {
+    console.log('MultiplicationTableComponent ngOnInit');
   }
 
+  getZero(): number {
+    return 0;
+  }
+
+  multiplicate(n1: number, n2: number): number {
+    return n1 * n2;
+  }
+
+  getAbsValue(n: number): number {
+    if (n < 0) {
+      return n * (-1);
+    }
+    else {
+      return n;
+    }
+  }
+
+  getFactorial(n: number): number {
+    n = this.getAbsValue(n);
+    if(n == 0 || n == 1) {
+      return 1;
+    }
+    else {
+      return n * this.getFactorial(n-1);
+    }
+  }
 }
