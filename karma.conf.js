@@ -9,6 +9,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
+      require('karma-coverage-istanbul-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
@@ -24,13 +25,16 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
-    coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/training01'),
-      subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+    coverageIstanbulReporter: {
+      dir: require('path').join(__dirname, 'coverage'),
+      reports: ['lcov', 'cobertura', 'text', 'text-summary'],
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        statements: 75,
+        lines: 75,
+        branches: 75,
+        functions: 75
+      }
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
@@ -38,6 +42,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });
