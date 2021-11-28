@@ -45,4 +45,13 @@ export class MultiplicationTableComponent implements OnInit {
       return n * this.getFactorial(n-1);
     }
   }
+
+  sum(n: number): number {
+    if (n <= 0) {
+      return 0;
+    }
+    else {
+      return n + this.sum(n-1);
+    }
+  }
 }

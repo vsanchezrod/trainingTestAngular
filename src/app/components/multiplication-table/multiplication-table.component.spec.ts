@@ -55,4 +55,20 @@ describe('MultiplicationTableComponent', () => {
     expect(component.getFactorial(1)).toEqual(1);
   });
 
+  it('should sum n first numbers, if n = 0 returns 0', () => {
+    expect(component.sum(0)).toEqual(0);
+  });
+
+  it('should sum n first numbers, if n = -1 returns 0', () => {
+    expect(component.sum(-1)).toEqual(0);
+  });
+
+  it('should sum n first numbers, if n = 1 returns 1', () => {
+    expect(component.sum(1)).toEqual(1);
+  });
+
+  it('should sum n first numbers, if n = 5 returns 15', () => {
+    expect(component.sum(5)).toEqual(15);
+  });
+
 });
